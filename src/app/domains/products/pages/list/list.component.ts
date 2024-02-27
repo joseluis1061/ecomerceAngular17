@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from '../../components/product/product.component';
 @Component({
@@ -8,8 +8,9 @@ import { ProductComponent } from '../../components/product/product.component';
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
-export class ListComponent {
+export class ListComponent  {
   img: string = "https://picsum.photos/640/640?r="+Math.random();
+
 
   fromChild(title: string){
     console.log("Product title", title);
