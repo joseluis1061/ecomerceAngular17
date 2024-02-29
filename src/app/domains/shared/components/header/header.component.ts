@@ -9,11 +9,10 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  toggleCart: boolean = true;
+  hiddenSideMenu: boolean = true;
 
-  onToggleCart (){
-    console.log("Cambio", this.toggleCart)
-    this.toggleCart = !this.toggleCart;
+  toogleSideMenu(): void{
+    this.hiddenSideMenu = !this.hiddenSideMenu;
   }
 
 }

@@ -1,11 +1,6 @@
 <div class="container mx-auto">
   <app-header/>
-  <div class="grid grid-cols-4 justify-items-center gap-8 py-4 my-5">
-    <app-product [img]="img" [price]="3000" [title]="'Producto1'" (addToCartEvent)="fromChild($event)"/>
-    <app-product [img]="img" [price]="4000" [title]="'Producto2'" (addToCartEvent)="fromChild($event)"/>
-    <app-product [img]="img" [price]="2000" [title]="'Producto3'" (addToCartEvent)="fromChild($event)"/>
-    <app-product [img]="img" [price]="5000" [title]="'Producto4'" (addToCartEvent)="fromChild($event)"/>
-    <app-product [img]="img" [price]="6700" [title]="'Producto5'" (addToCartEvent)="fromChild($event)"/>
-    <app-product [img]="img" [price]="5600" [title]="'Producto6'" (addToCartEvent)="fromChild($event)"/>
+  <div class="grid lg:grid-cols-4  md:grid-cols-3 justify-items-center gap-8 py-4 my-5">
+    <app-product *ngFor="let product of productList()" [product]="product" (addToCartEvent)="fromChild($event)"/>
   </div>
 </div>
