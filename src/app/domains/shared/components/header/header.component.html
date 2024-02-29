@@ -31,7 +31,8 @@
       </ul>
     </div>
     <div class="flex items-center">
-      <button class="px-4" (click)="toogleSideMenu()">
+      <button class="p-2 border rounded relative" (click)="toogleSideMenu()">
+        <span class="rounded absolute top-0 -left-2 bg-black text-white h-5 w-5 text-xs">{{cartList.length}}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -57,6 +58,7 @@
 >
   <div class="flex justify-between items-center">
     <p class="text-xl">My Cart</p>
+    
     <button (click)="toogleSideMenu()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -74,4 +76,12 @@
       </svg>
     </button>
   </div>
+  @for(product of cartList; track  product){
+    <div class="flex justify-between items-center space-y-2 my-2">
+      <img class="h-6 w-6" [src]="product.image" alt="product image">
+      <p>${{product.price}}</p>
+      <p>{{product.title}}</p>
+    </div>
+  }
+  <p class="text-xl">Total: ${{totalPrice()}}</p>
 </div>
