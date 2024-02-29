@@ -14,6 +14,7 @@ export class ListComponent  {
   img: string = "https://picsum.photos/640/640?r="+Math.random();
 
   productList = signal<Product[]>([]);
+  cartList = signal<Product[]>([]);
 
   constructor(){
     let productsList: Product[] = [
@@ -53,6 +54,6 @@ export class ListComponent  {
 
 
   fromChild(product: Product){
-    console.log("Product title", product);
+    this.cartList.update(productPrevio => [...productPrevio, product]);
   }
 }
