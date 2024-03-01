@@ -1,8 +1,9 @@
-import { Component, OnChanges, OnInit, AfterViewInit, signal } from '@angular/core';
+import { Component, OnChanges, OnInit, AfterViewInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from '../../components/product/product.component';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { Product } from '../../../shared/models/product.model';
+import { CartService } from '../../../shared/services/cart.service';
 @Component({
   selector: 'app-list',
   standalone: true,
@@ -11,10 +12,11 @@ import { Product } from '../../../shared/models/product.model';
   styleUrl: './list.component.scss'
 })
 export class ListComponent  {
+  private cartService = inject(CartService);
+
   img: string = "https://picsum.photos/640/640?r="+Math.random();
 
-  productList = signal<Product[]>([]);
-  cartList = signal<Product[]>([]);
+  productList =signal<Product[]>([]);
 
   constructor(){
     let productsList: Product[] = [
@@ -54,6 +56,6 @@ export class ListComponent  {
 
 
   fromChild(product: Product){
-    this.cartList.update(productPrevio => [...productPrevio, product]);
+    this.cartService.addToCartSignal(product);
   }
 }
