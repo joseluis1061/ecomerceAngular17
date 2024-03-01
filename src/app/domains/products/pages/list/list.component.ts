@@ -21,31 +21,37 @@ export class ListComponent  {
   constructor(){
     let productsList: Product[] = [
       {
+        id: 0,
         image: "https://picsum.photos/640/640?r="+Math.random(),
         price: Math.floor(Math.random()*1000),
         title: 'Product_1'
       },
       {
+        id: 1,
         image: "https://picsum.photos/640/640?r="+Math.random(),
         price: Math.floor(Math.random()*1000),
         title: 'Product_2'
       },
       {
+        id: 2,
         image: "https://picsum.photos/640/640?r="+Math.random(),
         price: Math.floor(Math.random()*1000),
         title: 'Product_3'
       },
       {
+        id: 3,
         image: "https://picsum.photos/640/640?r="+Math.random(),
         price: Math.floor(Math.random()*1000),
         title: 'Product_4'
       },
       {
+        id: 4,
         image: "https://picsum.photos/640/640?r="+Math.random(),
         price: Math.floor(Math.random()*1000),
         title: 'Product_5'
       },
       {
+        id: 5,
         image: "https://picsum.photos/640/640?r="+Math.random(),
         price: Math.floor(Math.random()*1000),
         title: 'Product_6'
@@ -56,6 +62,6 @@ export class ListComponent  {
 
 
   fromChild(product: Product){
-    this.cartService.addToCartSignal(product);
+    this.cartService.addToCart(product);
   }
 }

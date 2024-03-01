@@ -16,8 +16,12 @@ export class CartService {
 
   constructor() { }
 
-  addToCartSignal(product: Product){
-    console.log("Producto: ", product)
-    this.cart.update(preview => [...preview, product])
+  addToCart(product: Product){
+    this.cart.update(preview => [...preview, product]);
+  }
+  deleteToCart(product: Product){
+    console.log(product.id)
+    const newData = this.cart().filter(item => item.id !== product.id);
+    this.cart.set(newData);
   }
 }

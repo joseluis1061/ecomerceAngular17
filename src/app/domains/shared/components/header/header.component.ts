@@ -19,5 +19,8 @@ export class HeaderComponent {
   toogleSideMenu(): void{
     this.hiddenSideMenu = !this.hiddenSideMenu;
   }
+  deleteProductCart(product:Product){
+    this.cartService.deleteToCart(product);
+  }
 
 }
