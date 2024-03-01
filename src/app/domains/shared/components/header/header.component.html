@@ -78,7 +78,7 @@
   </div>
   @for(product of cartList(); track  product){
     <div class="flex justify-between items-center space-y-2 my-2">
-      <img class="h-6 w-6" [src]="product.image" alt="product image">
+      <img class="h-6 w-6" [src]="product.images[0]" alt="product image">
       <p>${{product.price}}</p>
       <p>{{product.title}}</p>
       <button (click)="deleteProductCart(product)">x</button>

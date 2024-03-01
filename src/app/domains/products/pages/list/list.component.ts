@@ -4,6 +4,8 @@ import { ProductComponent } from '../../components/product/product.component';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { Product } from '../../../shared/models/product.model';
 import { CartService } from '../../../shared/services/cart.service';
+import { ProductsService } from '../../../shared/services/products.service';
+import { error } from 'console';
 @Component({
   selector: 'app-list',
   standalone: true,
@@ -11,53 +13,24 @@ import { CartService } from '../../../shared/services/cart.service';
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
-export class ListComponent  {
+export class ListComponent implements OnInit {
   private cartService = inject(CartService);
+  private productService = inject(ProductsService);
 
   img: string = "https://picsum.photos/640/640?r="+Math.random();
 
   productList =signal<Product[]>([]);
 
-  constructor(){
-    let productsList: Product[] = [
-      {
-        id: 0,
-        image: "https://picsum.photos/640/640?r="+Math.random(),
-        price: Math.floor(Math.random()*1000),
-        title: 'Product_1'
-      },
-      {
-        id: 1,
-        image: "https://picsum.photos/640/640?r="+Math.random(),
-        price: Math.floor(Math.random()*1000),
-        title: 'Product_2'
-      },
-      {
-        id: 2,
-        image: "https://picsum.photos/640/640?r="+Math.random(),
-        price: Math.floor(Math.random()*1000),
-        title: 'Product_3'
-      },
-      {
-        id: 3,
-        image: "https://picsum.photos/640/640?r="+Math.random(),
-        price: Math.floor(Math.random()*1000),
-        title: 'Product_4'
-      },
-      {
-        id: 4,
-        image: "https://picsum.photos/640/640?r="+Math.random(),
-        price: Math.floor(Math.random()*1000),
-        title: 'Product_5'
-      },
-      {
-        id: 5,
-        image: "https://picsum.photos/640/640?r="+Math.random(),
-        price: Math.floor(Math.random()*1000),
-        title: 'Product_6'
-      },
-    ]
-    this.productList.update(previoProduct => [...previoProduct, ...productsList])
+  ngOnInit(): void {
+      this.productService.getProducts()
+      .subscribe({
+        next: (products) => {
+          this.productList.set(products);
+        },
+        error: (error) => {
+          console.error("Error en petición: ", error);
+        }
+      })
   }
 
 
