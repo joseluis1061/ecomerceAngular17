@@ -15,12 +15,13 @@ import { error } from 'console';
 })
 export class ListComponent implements OnInit {
   private cartService = inject(CartService);
-  private productService = inject(ProductsService);
 
-  img: string = "https://picsum.photos/640/640?r="+Math.random();
+
+  //img: string = "https://picsum.photos/640/640?r="+Math.random();
 
   productList =signal<Product[]>([]);
 
+  private productService = inject(ProductsService);
   ngOnInit(): void {
       this.productService.getProducts()
       .subscribe({
