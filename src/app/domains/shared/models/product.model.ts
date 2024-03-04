@@ -3,12 +3,17 @@ export interface Product{
   title: string;
   price: number;
   description: string;
-  category: Category;
   images: string[];
+  creationAt: string;
+  updatedAt: string;
+  category: Category;
 }
 
 export interface Category {
   id: number;
   name: string;
   image: string;
+  creationAt:string;
+  updatedAt: string;
 }
+
