@@ -17,7 +17,7 @@ export class ProductsService {
     );
   }
 
-  getProductId(id: number){
+  getProductId(id: string){
     return this.http.get<Product>(`${this.url}/${id}`).pipe(
       map(product => this.transformProduct(product))
     );
