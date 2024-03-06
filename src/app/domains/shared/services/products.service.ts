@@ -11,8 +11,12 @@ export class ProductsService {
   url: string = "https://api.escuelajs.co/api/v1/products";
   private http = inject(HttpClient);
 
-  getProducts(){
-    return this.http.get<Product[]>(this.url).pipe(
+  getProducts(categoryId?: string){
+    const urlParam = new URL(this.url);
+    if(categoryId){
+      urlParam.searchParams.set("categoryId", categoryId)
+    }
+    return this.http.get<Product[]>(urlParam.toString()).pipe(
       map(products => this.transformProducts(products))
     );
   }
@@ -22,8 +26,6 @@ export class ProductsService {
       map(product => this.transformProduct(product))
     );
   }
-
-
 
   private transformProducts(products: Product[]): Product[] {
     return products.map(product => {
