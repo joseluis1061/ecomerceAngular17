@@ -1,5 +1,5 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { Product } from '../models/product.model';
+import { Product, Category } from '../models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -22,6 +22,8 @@ export class ProductsService {
       map(product => this.transformProduct(product))
     );
   }
+
+
 
   private transformProducts(products: Product[]): Product[] {
     return products.map(product => {
