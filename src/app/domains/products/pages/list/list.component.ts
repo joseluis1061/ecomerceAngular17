@@ -39,9 +39,7 @@ export class ListComponent implements OnInit, OnChanges {
     this.productService.getProducts(categoryid)
       .subscribe({
         next:(products) => {
-          //console.log(products)
-          this.productList.set(products)
-          console.log(this.productList())
+          this.productList.set(products);
         }
       })
   }
