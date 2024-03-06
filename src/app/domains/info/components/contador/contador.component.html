@@ -1,2 +1,4 @@
-<p *ngIf="!destroyCount">{{contador()}}</p>
+@if (!destroyCount) {
+  <p>{{contador()}}</p>
+}
 <button (click)="updateDestroy()">Destroy</button>

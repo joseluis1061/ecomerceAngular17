@@ -1,9 +1,9 @@
 import { Component, signal, OnInit, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-contador',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './contador.component.html',
   styleUrl: './contador.component.scss'
 })
